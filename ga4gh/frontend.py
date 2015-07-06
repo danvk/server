@@ -419,6 +419,40 @@ def searchVariants(version):
         version, flask.request, app.backend.searchVariants)
 
 
+@app.route('/<version>/features/<id>')
+def getFeature(version, id):
+    return handleFlaskGetRequest(
+        version, id, flask.request, app.backend.getFeature)
+
+
+@app.route('/<version>/features/search', methods=SEARCH_ENDPOINT_METHODS)
+def searchFeatures(version):
+    return handleFlaskPostRequest(
+        version, flask.request, app.backend.searchFeatures)
+
+
+@app.route(
+    '/<version>/rnaquantification/search',
+    methods=SEARCH_ENDPOINT_METHODS)
+def searchRNAQuantification(version):
+    return handleFlaskPostRequest(
+        version, flask.request, app.backend.searchRnaQuantification)
+
+
+@app.route(
+    '/<version>/expressionlevel/search', methods=SEARCH_ENDPOINT_METHODS)
+def searchExpressionLevel(version):
+    return handleFlaskPostRequest(
+        version, flask.request, app.backend.searchExpressionLevel)
+
+
+@app.route(
+    '/<version>/featuregroup/search', methods=SEARCH_ENDPOINT_METHODS)
+def searchFeatureGroup(version):
+    return handleFlaskPostRequest(
+        version, flask.request, app.backend.searchFeatureGroup)
+
+
 @app.route('/<version>/datasets/search', methods=SEARCH_ENDPOINT_METHODS)
 def searchDatasets(version):
     return handleFlaskPostRequest(
@@ -450,11 +484,6 @@ def getVariantSetSequence(version, vsid, sid):
 
 @app.route('/<version>/variantsets/<no(search):id>')
 def getVariantSet(version, id):
-    raise exceptions.NotImplementedException()
-
-
-@app.route('/<version>/feature/<id>')
-def getFeature(version, id):
     raise exceptions.NotImplementedException()
 
 
@@ -534,11 +563,6 @@ def subgraphSegments(version):
 
 @app.route('/<version>/subgraph/joins', methods=SEARCH_ENDPOINT_METHODS)
 def subgraphJoins(version):
-    raise exceptions.NotImplementedException()
-
-
-@app.route('/<version>/features/search', methods=SEARCH_ENDPOINT_METHODS)
-def searchFeatures(version):
     raise exceptions.NotImplementedException()
 
 
