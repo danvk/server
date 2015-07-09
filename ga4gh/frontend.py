@@ -225,6 +225,8 @@ def configure(configFile=None, baseConfig="ProductionConfig",
             numReferenceSets, numReferencesPerReferenceSet, numAlignments)
     elif dataSource == "__EMPTY__":
         theBackend = backend.EmptyBackend()
+    elif isinstance(dataSource, backend.AbstractBackend):
+        theBackend = dataSource
     else:
         theBackend = backend.FileSystemBackend(dataSource)
     theBackend.setRequestValidation(app.config["REQUEST_VALIDATION"])
